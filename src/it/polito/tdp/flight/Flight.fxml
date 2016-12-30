@@ -33,7 +33,7 @@
                   <ComboBox fx:id="boxAirline" prefWidth="300.0" GridPane.columnIndex="1" />
                   <Label text="Aeroporto" GridPane.rowIndex="1" />
                   <ComboBox fx:id="boxAirport" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" onAction="#doRaggiungibili" text="Raggiungibili" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Button fx:id="btnRagg" mnemonicParsing="false" onAction="#doRaggiungibili" text="Raggiungibili" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#doServiti" text="Aeroporti serviti" GridPane.columnIndex="2" />
                </children>
             </GridPane>

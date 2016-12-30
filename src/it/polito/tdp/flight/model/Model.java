@@ -59,7 +59,7 @@ public class Model {
 		return grafo;
 	}
 	
-	
+	//gli aereoporti raggiunti da quella compagnia (punto 1)
 	public List<Airport> getRaggiungibili(DefaultDirectedWeightedGraph<Airport, DefaultWeightedEdge> grafo){
 		BreadthFirstIterator <Airport, DefaultWeightedEdge> visita = new BreadthFirstIterator <Airport, DefaultWeightedEdge>(grafo);
 		List<Airport> vicini = new LinkedList<Airport>();

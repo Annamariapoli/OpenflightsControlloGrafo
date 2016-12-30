@@ -1,10 +1,12 @@
 package it.polito.tdp.flight.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.jgrapht.Graphs;
 import org.jgrapht.graph.DefaultDirectedWeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
+import org.jgrapht.traverse.BreadthFirstIterator;
 
 import com.javadocmd.simplelatlng.LatLngTool;
 import com.javadocmd.simplelatlng.util.LengthUnit;
@@ -42,7 +44,7 @@ public class Model {
 		return false;
 	}
 	
-	public void buildGraph(int codiceComp){
+	public DefaultDirectedWeightedGraph<Airport, DefaultWeightedEdge> buildGraph(int codiceComp){
 		grafo = new DefaultDirectedWeightedGraph<Airport, DefaultWeightedEdge>(DefaultWeightedEdge.class);
 		List<Airport> aerei = getAllAereo();
 		Graphs.addAllVertices(grafo, aerei);           //tutti i vertici sono gli aereoporti
@@ -54,9 +56,19 @@ public class Model {
 				}
 			}
 		}
-		System.out.println(grafo.toString());
+		return grafo;
 	}
 	
+	
+	public List<Airport> getRaggiungibili(DefaultDirectedWeightedGraph<Airport, DefaultWeightedEdge> grafo){
+		BreadthFirstIterator <Airport, DefaultWeightedEdge> visita = new BreadthFirstIterator <Airport, DefaultWeightedEdge>(grafo);
+		List<Airport> vicini = new LinkedList<Airport>();
+		while(visita.hasNext()){
+			Airport a = visita.next();
+			vicini.add(a);
+		}
+		return vicini;
+	}
 	
 	public static void main(String [] args){
 		Model m = new Model();

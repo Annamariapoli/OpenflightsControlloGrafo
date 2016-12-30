@@ -1,7 +1,11 @@
 package it.polito.tdp.flight;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import org.jgrapht.graph.DefaultDirectedWeightedGraph;
+import org.jgrapht.graph.DefaultWeightedEdge;
 
 import it.polito.tdp.flight.model.Airline;
 import it.polito.tdp.flight.model.Airport;
@@ -47,8 +51,11 @@ public class FlightController {
     		txtResult.appendText("Seleziona una compagnia aerea!\n");
     		return;
     	}
-    	m.buildGraph(a.getAirlineId());      //costruisco  Grafo
-    	
+    	DefaultDirectedWeightedGraph<Airport, DefaultWeightedEdge> grafo = m.buildGraph(a.getAirlineId());      //costruisco  Grafo
+    	List<Airport > raggiungibili = m.getRaggiungibili(grafo);
+    	for(Airport a1 : raggiungibili){
+    	     txtResult.appendText(a1+" \n");
+    	}
 
     }
 
